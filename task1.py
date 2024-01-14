@@ -1,6 +1,7 @@
 from queue import Queue
 from uuid import uuid4
 
+
 queue = Queue()
 
 
@@ -23,11 +24,10 @@ def process_request():
 
 
 while True:
-    user_input = input("Press 'Enter' to continue or 'q' to quit: ")
+    try:
+        generate_request()
+        process_request()
 
-    if user_input.lower() == "q":
-        print("Program completed.")
+    except KeyboardInterrupt:
+        print("Program terminated by user.")
         break
-
-    generate_request()
-    process_request()
